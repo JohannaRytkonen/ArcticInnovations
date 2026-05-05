@@ -43,3 +43,37 @@ Ensimmäiset rivit näyttävät tavalliselta liikenteeltä. Näiden jälkeen kui
 ::1 - -  [30/Apr/2026:11:27:51 +0000] "GET /HTTP/1.1" 200 721 "-" "curl/8.5.0"
 
 Tämä ei ole tavallista liikennettä. Pyyntöjä on tehty muutaman minuutin välein samaan osoitteeseen. Rivien lopussa oleva "curl/8.5.0" tarkoittaa sitä, ettei pyyntöä tehnyt tavallinen selain vaan pyyntö on tehty curl-komennolla komentoriviltä. Tässä tapauksessa kuitenkin huomataan, että ::1 tarkoittaa localhost IPv6 osoitetta eli pyyntö on tullut samalta koneelta, ei ulkopuolelta. Vaikka liikenne ei ole tavanomaista liikennettä, todennäköisesti tässä ei ole kyse hyökkäyksestä vaan esimerkiksi ylläpitoon liittyvästä testauksesta.
+
+Seuraavat rivit lokeissa näyttävät tavanomaiselta liikenteeltä. Lokirn riveillä näkyy muun muassa seuraavia GET-pyyntöjä:
+
+GET /dvwa/
+GET /dvwa/login.php
+GET /dvwa/setup.php
+GET /dvwa/dvwa/css/main.css
+GET /dvwa/dvwa/js/dvwaPage.js
+GET /dvwa/dvwa/images/logo.png
+
+Kun selaimella avaa sivun, selain lataa lisäksi sivun resursseja, kuten sivun tyylit (CSS), skriptit (JS) ja kuvat. Yksi sivun lataus voi näkyä useina GET-pyyntöinä lokissa. Käyttäjä on avannut sivun dvwa ja sen jälkeen siirtynyt kirjautumissivulle dvwa/login.php. Lisäksi käyttäjä on ladannut dvwa/setup.php-sivun, joka on asunnussivu. Tämä voi kertoa siitä, että käyttäjä on kiinnostunut sivuista ja tekee mahdollisesti tiedustelua.
+
+Kun skrollataan lokia vähän alemmas huomataan ensimmäinen POST-pyyntö.
+
+POST /dvwa/setup.php
+
+Käyttäjä ei enää vain katso sivua vaan yrittää suorittaa toimintoa ja mahdollisesti muuttaa järjestelmän tilaa. POST-pyyntö tarkoittaa siis tietojen lähettämistä kyseiselle sivulle.
+
+Tämän jälkeen lokissa on nähtävissä muun muassa seuraavia rivejä:
+
+GET /dvwa/login.php
+POST /dvwa/login.php
+GET /dvwa/index.php
+POST /dvwa/security.php
+GET /dvwa/security.php
+
+Käyttäjä avaa kirjautumissivun ja lähettää tunnuksia sivuille. Tämän jälkeen aukeaa index.php-sivu, mikä saattaa kertoa siitä, että hyökkääjä on päässyt järjestelmään sisään. Käyttäjä etenee security-sivulle ja pyrkii muuttamaan tietoturva-asetuksia, mahdollisesti seuraavaa hyökkäysvaihetta ajatellen.
+
+Lokitiedot päättyvät tähän, joten siirrytään seuraavaan lokiin
+
+"Jatka eteenpäin"
+
+
+
