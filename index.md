@@ -6,6 +6,8 @@ Olen koonnut sinulle mukautetun laboratorioympäristön, joka havainnoillistaa h
 
 Tämä oppimisympäristö on totetutettu opinnäytetyönä. Koska olen itsekin vielä aloitteleva kyberturvallisuuden alalla, haluan tarjota myös muille vasta-alkajille helpon ja ohjatun tavan päästä asian äärelle.
 
-Oletko vakmis aloittamaan? 
+Oletko valmis aloittamaan? 
 
 Hienoa klikkaa alta päästäksesi aloittamaan
+
+"ALOITA"
