@@ -32,7 +32,11 @@ Joillekin hakusanoille tulee vain muutamia tuloksia ja joillekin useita. Hakuja 
 
 Accepted password for developer from 192.168.30.4
 
-Tämä tarkoittaa sitä, että hyökkääjän IP-osoiteesta on hyväksytty käyttäjän developer salasana. Tämä vahbistaa sen, etttä hyökkääjä on päässyt sisään järjestelmään
+Tämä tarkoittaa sitä, että hyökkääjän IP-osoiteesta on hyväksytty käyttäjän developer salasana. Tämä vahvistaa sen, etttä hyökkääjä on päässyt sisään järjestelmään.
+
+Muta mitä hyökkääjä sitten on tehnyt järjestelmässä?
+
+"JATKA"
 
 
 
