@@ -1,16 +1,16 @@
 Okei, seuraavaksi yritetään selvittää, mitä hyökkääjä on tehnyt järjestelmän sisällä.
 
-Aloitetaan tutkiminen auth.log.1 ja auth.log -lokeista. Haetaan lokeista kaikki käyttäjän developer toimet, näistä voi selvitä jotakin. Koska rivejä voi olla paljon käytetään grep-työkalua poimimiseen ja avataan tiedot less-työkalulla, jotta niitä pääsee selaamaan:
+Aloitetaan tutkiminen auth.log.1 ja auth.log -tiedostoista. Haetaan lokeista kaikki käyttäjän developer toimet, näistä voi selvitä jotakin. Koska rivejä voi olla paljon käytetään grep-työkalua poimimiseen ja avataan tiedot less-työkalulla, jotta niitä pääsee selaamaan:
 
 sudo grep "developer" /var/log/auth.log.1 | less
 
 Nyt pääset selaamaan tuloksia nuolinäppäimillä. Voit lisäksi tehdä hakuja näistä tiedoista kirjoittamalla: / hakusana
 
-Näistä hakutuksista voidaan hakea rivit, joissa esiintyy hyökkääjän IP-osoite 192.168.30.4 ja tuloksena saadaan muutama rivi. Näistä nähdään, että hyökkääjä on kirjautunut sisään 2.5.2026 kello 13:49:25 ja istunto on päättynyt 2.5.2026 kello 14:00:33. Tämä perusteella hyökkääjä olisi ollut kirjautuneena ainoastaan hieman yli 10 minuuttia.
+Näistä hakutuloksista voidaan hakea rivit, joissa esiintyy hyökkääjän IP-osoite 192.168.30.4 ja tuloksena saadaan muutama rivi. Näistä nähdään, että hyökkääjä on kirjautunut sisään 2.5.2026 kello 13:49:25 ja istunto on päättynyt 2.5.2026 kello 14:00:33. Tämä perusteella hyökkääjä olisi ollut kirjautuneena ainoastaan hieman yli 10 minuuttia.
 
-Tämän jälkeen voidaan etsiä esimerkiksi sanaa sudo, mikä voi kertoa esimerkiksi oikeuksien korotuksesta. Kaikki sudo-sanaan liittyvät hakutukset ovat kuitenkin jo hyökkäystä edeltävältä ajalta, joten merkkejä oikeuksien korottamisesta ei löytynyt.
+Tämän jälkeen voidaan etsiä haun "developer" tuloksista esimerkiksi sanaa "sudo", mikä voi kertoa mahdollisista oikeuksien korotuksesta. Kaikki sudo-sanaan liittyvät hakutukset näyttävät kuitenkin olevan jo hyökkäystä edeltävältä ajalta, joten merkkejä oikeuksien korottamisesta ei löytynyt.
 
-Etsitään tämä jälkeen vielä rivejä, joissa olisi developer ja session opened. Näillä hakukriteereillä voitaisiin nähdä, mikäli hyökkääjä on avannut istunnon root-oikeuksilla:
+Etsitään tämä jälkeen vielä rivejä, joissa olisi sanat "developer" ja "session opened". Näillä hakukriteereillä voitaisiin nähdä, mikäli hyökkääjä on avannut istunnon root-oikeuksilla:
 
 sudo grep "session opened" /var/log/auth.log.1 | grep "developer"
 
@@ -29,14 +29,16 @@ Nyt siis tiedetään, että hyökkääjä on päässyt järjestelmään sisään
 sudo -l -U developer
 
 Tämän komennon vastaus kertoo, että käyttäjällä developer ei ole sudo-oikeuksia ArcticInnovations-palvelimella.
+
 Tarkistetaan vielä käyttäjän developer ryhmät:
 
 id developer
 
 uid=1002(developer) gid=1002(developer) groups=1002(developer),100(users)
-Tästä nähdään, että käyttäjä developer kuuluu ensisijaisesti ryhmään developer ja myös toiseen ryhmään users. Developer on tavallinen käyttäjä, eikä hän ole root-käyttäjä.
 
-Hyökkääjä on ilmeisesti kiinnostunut palvelimella olevasta tiedosta ja erityisesti arctic-data kansiosta. Tarkistetaan kansion oikeudet, jotta saadaan selville on hyökkääjä nähnyt arvokkaita tietoja ollessaan kirjautuneena käyttäjätunnuksella developer:
+Tästä nähdään, että käyttäjä developer kuuluu ensisijaisesti ryhmään developer ja myös toiseen ryhmään users. Developer on tavallinen käyttäjä, eikä hänellä ole root-oiekuksia.
+
+Hyökkääjä on ilmeisesti kiinnostunut palvelimella olevasta tiedosta ja erityisesti arctic-data kansiosta. Tarkistetaan kansion oikeudet, jotta saadaan selville on hyökkääjä nähnyt arvokkaita tietoja ollessaan kirjautuneena käyttäjätunnuksella "developer":
 
 sudo ls -ld opt/arctic-data
 
