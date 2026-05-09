@@ -38,3 +38,7 @@ sulo zless /var/log/apache2/error.log.3.gz
 
 Myöskään tässä ei ollut enää mielenkiintoista tietoa. 
 
+Hienoa, nyt olet käynyt läpi kaikki oleelliset lokit ja analysoinut ne. Jatketaan vielä vähän.
+
+"JATKA"
+
