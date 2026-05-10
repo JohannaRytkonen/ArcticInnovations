@@ -11,7 +11,7 @@ tee tiedostoon seuraavat muutokset:
 PermitRootLogin no
 MaxAuthTries 3
 
-Tallenna tiedosto painamalla x sen jälkeen y ja hyväksy enter-näppäimellä. Käynnistetään SSH uudelleen:
+Tallenna tiedosto painamalla ctrl + x sen jälkeen y ja hyväksy enter-näppäimellä. Käynnistetään SSH uudelleen:
 
 sudo systemctl restart ssh
 
