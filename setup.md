@@ -26,7 +26,11 @@ Ennen kuin päästään tositoimiin, tarvitset turvallisen harjoitteluympärist�
    3. Valitse lataamasi .ova-tiedosto
    4. Klikkaa "Finish"
 
-3. 
+3. Luodaan NAT Network
+
+   Luodaan seuraavaksi Nat Network sisäverkko. Se tarkoittaa sitä, että virtallikoneella on pääsy internetiin, mutta ulkoa ei pääse suoraan Virtuaalikoneelle. 
+
+   
 
       
 
