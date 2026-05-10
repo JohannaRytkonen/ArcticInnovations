@@ -17,10 +17,13 @@ sudo systemctl restart ssh
 
 Näiden asetusten tarkoituksena on estää root-kirjautuminen ja rajoittaa kirjautumisyritykset kolmeen yritykseen.
 
-Seuraavaksi parannetaan brute force -suojausta. Asennetaan Fail2Ban. Se on työkalu, joka tunnistaa toistuvat epäonnistuneet tai epäilyttävät tapahtumat ja estää lähdeosoitteen pääsyn palveluun:
+Seuraavaksi parannetaan brute force -suojausta. Otetaan Fail2Ban-työkalu käyttöön. Se on työkalu, joka tunnistaa toistuvat epäonnistuneet tai epäilyttävät tapahtumat ja estää lähdeosoitteen pääsyn palveluun. Avataan asetustiedosto:
 
-sudo apt update
-sudo apt install fail2ban -y
+sudo nano /etc/fail2ban/jail.local
+
+Muokataan tiedostoon kohtaan [sshd]:
+
+enabled=true
 
 Käynnistetään Fail2ban ja otetaan käyttöön:
 
