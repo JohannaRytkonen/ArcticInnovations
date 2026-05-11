@@ -25,6 +25,8 @@ Muokataan tiedostoon kohtaan [sshd]:
 
 enabled=true
 
+Tallennetaan painamalla Ctrl + x sen jälkeen y ja lopuksi enter.
+
 Käynnistetään Fail2ban ja otetaan käyttöön:
 
 sudo systemctl enable fail2ban
