@@ -1,6 +1,6 @@
 Okei, seuraavaksi yritetään selvittää, mitä hyökkääjä on tehnyt järjestelmän sisällä.
 
-Aloitetaan tutkiminen auth.log.1 ja auth.log -tiedostoista. Haetaan lokeista kaikki käyttäjän developer toimet, näistä voi selvitä jotakin. Koska rivejä voi olla paljon käytetään grep-työkalua poimimiseen ja avataan tiedot less-työkalulla, jotta niitä pääsee selaamaan:
+Aloitetaan tutkiminen auth.log.2.gz ja auth.log.1 sekä auth.log -tiedostoista. Haetaan lokeista kaikki käyttäjän developer toimet, näistä voi selvitä jotakin. Koska rivejä voi olla paljon käytetään grep-työkalua poimimiseen ja avataan tiedot less-työkalulla, jotta niitä pääsee selaamaan:
 
 sudo grep "developer" /var/log/auth.log.1 | less
 
