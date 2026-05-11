@@ -26,16 +26,20 @@ Ennen kuin päästään tositoimiin, tarvitset turvallisen harjoitteluympärist�
    3. Valitse lataamasi .ova-tiedosto
    4. Klikkaa "Finish"
 
-3. Liitetään virtuaalikone Host-Only -verkkoon
+3. Liitetään virtuaalikone Internal Network -verkkoon
 
-    Host-Only -verkko tarkoittaa sitä, että virtallikone toimii täysin eristetyssä ympäristössä. Mikään ulkopuolelta ei siis pääse sisään ja virtuaalikoneella ei ole internetyhteyttä, joten virtuaalikoneesi ei myöskään pääse lähettäämään mitään haitallista ulospäin. Tämä on turvallinen tapa tehdä labra.
+    Internal Network -verkko tarkoittaa sitä, että virtallikone toimii täysin eristetyssä ympäristössä. Mikään ulkopuolelta ei siis pääse sisään ja virtuaalikoneella ei ole internetyhteyttä, joten virtuaalikoneesi ei myöskään pääse lähettäämään mitään haitallista ulospäin. Tämä on turvallinen tapa tehdä labra.
 
      1. Avaa Virtualbox
      2. Tarkista, että ArcticInnovations-server on sammutettuna
-     3. Valite ArcticInnovations-server
+     3. Valitse ArcticInnovations-server
      4. Klikkaa "Settings" -> "Network"
-     5. Valitse alasvetovalikosta "Host-Only adapter"
-     6. Klikkaa "OK"
+     5. Valitse "Adapter 1" -välilehti
+     6. "Enable Network Adapter" pitää olla valittuna
+     7. "Attached to:" -alasvetovalikosta valitse "Internal Network"
+     8. "Name:" valitse oletusverkko "intnet"
+     9. "Cable connected" pitää olla valittuna
+     10. Klikkaa "OK"
 
 4. Käynnistä kone ja kirjaudu sisään
 
